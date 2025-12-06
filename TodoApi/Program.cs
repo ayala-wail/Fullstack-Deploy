@@ -24,12 +24,12 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// ✅ הפעלת Swagger (בזמן פיתוח)
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//// ✅ הפעלת Swagger (בזמן פיתוח)
+//if (app.Environment.IsDevelopment())
+//{
+   app.UseSwagger();
+   app.UseSwaggerUI();
+//}
 
 // ✅ הפעלת CORS
 app.UseCors(x => x
@@ -79,5 +79,6 @@ app.MapDelete("/items/{id}", async (ToDoDbContext db, int id) =>
     await db.SaveChangesAsync();
     return Results.NoContent();
 });
+app.MapGet("/", () => "SERVER IS RUNNING");
 
 app.Run();
